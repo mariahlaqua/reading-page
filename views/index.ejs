@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="#" class="image avatar"><img src="images/boomheadshot.jpg" alt="" /></a>
+            <h1><strong>Mariah</strong> - fullstack developer<br />
+            - yoga teacher <br />
+            - human</h1>
+        </div>
+    </header>
+<div id="main">
+   
+
+<!-- GOOGLE BOOKS SEARCH   -->
+    <section id="one">
+        <header class="major">
+            <h2>I love to read, use the<br />
+            Google Books API to recommend a book to me!</h2>
+        </header>
+        <p>Type in a title or author to see results, then click recommend to add it to my list.</p>
+        <ul class="actions">
+            <li><form><input type="text" placeholder="Search" name="query" id="APIquery"><a href="#" class="button" id="search">Search</a></form></li>
+        </ul>
+    </section>
+
+    <h2>Add A Book:</h2>
+
+    <form action="/addBook" method="post">
+        <input type="text" placeholder="Title" name="bookTitle">
+        <input type="text" placeholder="Author" name="bookAuthor">
+        <input type="text" placeholder="Description" name="bookDescription">
+        <input type="url" placeholder="image" name="imgUrl">
+        <input type="url" placeholder="Google books url" name="descriptionUrl">
+        <input type="month" placeholder="Date" name="monthAdded">
+        <input type="month" placeholder="Date" name="googleBooksId">
+        <input type="submit">
+    </form>
+    
+</div>
+    
+
+    <script src='js/main.js'></script>
+
+</body>
+</html>
