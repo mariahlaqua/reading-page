@@ -1,5 +1,7 @@
 # Personal Reading Page
 
+![A preview image of the end UI.](https://github.com/mariahlaqua/reading-page/blob/main/public/images/screenshot.jpg?raw=true)
+
 This project is not complete. A simple template to receive book recommendations from users, and to share what you are currently reading and have read in the past. This template uses Google Books to search and MongoDb with Mongoose to store information.
 
 Currently the search is functional but results do not display. Additionally, authorization needs to be implemented.
