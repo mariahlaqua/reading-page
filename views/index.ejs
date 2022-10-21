@@ -38,9 +38,24 @@
         </header>
         <p>Type in a title or author to see results, then click recommend to add it to my list.</p>
         <ul class="actions">
-            <li><form><input type="text" placeholder="Search" name="query" id="APIquery"><a href="#" class="button" id="search">Search</a></form></li>
+            <li><form><input action="/search" type="text" placeholder="Search" name="query" id="apiQuery"><a href="#" class="button" id="search">Search</a></form></li>
         </ul>
     </section>
+<!-- RESULTS-->
+<section id="two">
+    <h2>Results</h2>
+    
+        <div class="row">
+        <% books.items.forEach( el, i => el{ %>
+        <article class="col-6 col-12-xsmall work-item">
+            <a href='<%el[i].selflink%>' class="image fit thumb"><img src='<%el[i].volumInfo.smallThumbnail%>' alt=""></a>
+            <h3>Title</h3>
+            <h5>Author</h5>
+            <p></p>
+        </article>
+        <% }) %>
+    </div>
+</section>
 
     <h2>Add A Book:</h2>
 

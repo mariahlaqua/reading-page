@@ -1,20 +1,14 @@
 const express = require('express')
 const app = express()
-const PORT = 3000
-const MongoClient = require('mongodb').MongoClient
+const PORT = require('./config/.env')
+const connectDB = require('./config/database')
 const cors = require('cors')
-const { FindCursor } = require('mongodb')
-require('dotenv').config()
+const homeRoutes = require('./routes/home')
+const mongoose = require('mongoose')
 
-let db,
-    dbConnectionStr = process.env.DB_STRING,
-    dbName = 'Cluster0'
+require('dotenv').config({path: './config/.env'})
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-    })
+connectDB()
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -22,10 +16,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
 
+app.use('/', homeRoutes)
+
+//the routes below are from the project before updating to Model-view-architecture
+
+/*
 app.get('/',(request, response)=>{
    db.collection('books').find().toArray()
     .then(data => {
-        response.render('index.ejs'/*, {info: data}*/)
+        response.render('index.ejs'/*, {info: data}*//*)
         console.log(data)
     })
     .catch(error => console.error(error))
@@ -40,8 +39,8 @@ app.post("/addBook", (request, response) => {
         response.redirect('/')
     })
     .catch(error => console.error(error))
-})
+}) */
 
-app.listen(process.env.PORT || PORT, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
