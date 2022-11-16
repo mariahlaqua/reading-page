@@ -1,5 +1,8 @@
 
+/*
 const searchClick = document.getElementById('search')
+
+
 
 searchClick.addEventListener('click', bookSearch)
 // this needs to be updated so that searching responds by triggering the function, then rendering in the ejs file.
@@ -13,9 +16,11 @@ async function bookSearch(url, data={}){
         data = await response.json()
         const books = data
         console.log(data)
-        response.render('../views/index.ejs', {})
+        console.log(response)
+        response.redirect('../views/search.ejs', {books: books})
     }catch(err){
         console.log(err)
     }
 
 }
+*/

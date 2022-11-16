@@ -39,25 +39,36 @@
         <p>Type in a title or author to see results, then click recommend to add it to my list.</p>
         <ul class="actions">
             <li>
-                <form method="post">
-                <input action="/search" method="post" type="text" placeholder="Search" name="query" id="apiQuery">
-                <a href="#" id="search"><button>Search</button></a>
-                </form>
-            </li>
+            <form method="post">
+                <input action="/search" type="text" placeholder="Search" name="query" id="apiQuery">
+                <a href="#" id="search">
+                    <button>Search</button>
+                </a>
+            </form></li>
         </ul>
     </section>
 <!-- RESULTS-->
 <section id="two">
-    <h2>Results</h2>
+    <h2>Top 10 Results</h2>
     
         <div class="row">
         <% if(typeof books !== "undefined"){%>
-            <% books.items.forEach(el =>{ %>
+            
+            <% let topTen = books.items.slice(0, 9) %>
+            <% console.log(JSON.stringify(topTen)) %>
+            
+            <% topTen.forEach(el =>{ %>
+               <% console.log(el.volumeInfo.imageLinks)%>
             <article class="col-6 col-12-xsmall work-item">
-            <a href='<%el.selflink%>' class="image fit thumb"><img src='<%el.volumeInfo.smallThumbnail%>' alt=""></a>
-            <h3>Title</h3>
-            <h5>Author</h5>
-            <p></p>
+            <a href='<%= el.volumeInfo.infoLink %>' class="image fit thumb">
+                <% if(el.volumeInfo.imageLinks){ %>
+                <img src='<%= el.volumeInfo.imageLinks.thumbnail %>' alt="" class="image fit thumb">
+                <% }else{ %>
+                    <img src='https://shorturl.at/nX034' alt="" class="image fit thumb">
+                    <% }%>
+            </a>
+            <h3><%= el.volumeInfo.title %></h3>
+            <h5><%= el.volumeInfo.authors %></h5>
         </article>
         <% }) %>
         <% } %>
