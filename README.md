@@ -1,18 +1,21 @@
 # Personal Reading Page
 
-![A preview image of the end UI.](https://github.com/mariahlaqua/reading-page/blob/main/public/images/screenshot.jpg?raw=true)
+![A preview gif of the end UI.](https://github.com/mariahlaqua/reading-page/blob/main/public/images/search.gif)
 
 This project is not complete. A simple template to receive book recommendations from users, and to share what you are currently reading and have read in the past. This template uses Google Books to search and MongoDb with Mongoose to store information.
 
-Currently the search is functional but results do not display. Additionally, authorization needs to be implemented.
+Currently, the search is functional and up to ten results display.
 
 ### Technologies Used
 
 Search engine: Google Books API
 
-Front-end: HTML, Pixelarity CSS, EJS templating.
-Back-End: Node.js for local server, MongoDb with Mongoose
-Authorization: Currently not implemented.
+Front-end: HTML, Pixelarity CSS, EJS templating. Please note that the Pixelarity CSS was purchased and has been modified from the original.
+Back-End: Node.js for local server, MongoDb with Mongoose for database
+
+### Further Optimizations
+
+Allow recommendations to be saved by page visitors, and display previous recommendations.
 
 ### How to Install and Run Locally
 
