@@ -15,7 +15,7 @@ Back-End: Node.js for local server, MongoDb with Mongoose for database
 
 ### Further Optimizations
 
-Allow recommendations to be saved by page visitors, and display previous recommendations.
+Allow recommendations to be saved by page visitors, and display previous recommendations. In general some of the code needs to be cleaned up, and some comments added to clarify what is happening and where.
 
 ### How to Install and Run Locally
 
