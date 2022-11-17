@@ -28,7 +28,7 @@ Create a .env file, in this file, assign your mongoDb URI to the variable DB_Str
 If you have forked the repo and plan to push changes to gitHub, create a .gitignore file. Inside the gitignore file, add the following:
 
 ```.env```
-```node_modules```
+```node_modules/```
 
 This will prevent your secrets from being exposed on github.
 
