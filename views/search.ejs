@@ -48,17 +48,15 @@
         </ul>
     </section>
 <!-- RESULTS-->
-<section id="two">
-    <h2>Top 10 Results</h2>
+    <section id="two">
+        <h2>Top 10 Results</h2>
     
         <div class="row">
         <% if(typeof books !== "undefined"){%>
             
             <% let topTen = books.items.slice(0, 9) %>
-            <% console.log(JSON.stringify(topTen)) %>
             
             <% topTen.forEach(el =>{ %>
-               <% console.log(el.volumeInfo.imageLinks)%>
             <article class="col-6 col-12-xsmall work-item">
                 <form action="/addBook" method="POST">
                 <input type="hidden" name="url" value="<%= el.volumeInfo.infoLink %>" />
@@ -83,21 +81,51 @@
         <% } %>
         
         </div>
-</section>
+    </section>
+    <h2>Recent Recommendations</h2>
+    <div class="row">
+        <% recommended.forEach(el => { %>
+        <article class="col-6 col-12-xsmall work-item">
+            <a href='<%= el.url %>' class="image fit thumb">
+            <img src='<%= el.image %>' alt="" class="image fit thumb">
+            </a>
+        
+        <h3 name="title"><%= el.title %></h3>
+        
+        <h5 name="author"><%= el.author %></h5>
+        </article>
+        <% }) %>
+    </div>
+    <h2>Currently Reading</h2>
+    <div class="row">
+        <% currentlyReading.forEach(el => { %>
+        <article class="col-6 col-12-xsmall work-item">
+            <a href='<%= el.url %>' class="image fit thumb">
+            <img src='<%= el.image %>' alt="" class="image fit thumb">
+            </a>
+        
+        <h3 name="title"><%= el.title %></h3>
+        
+        <h5 name="author"><%= el.author %></h5>
+        </article>
+        <% }) %>
+    </div>
 
-    <h2>Add A Book:</h2>
+    <h2>Recently Read</h2>
 
-    <form action="/addBook" method="post">
-        <input type="text" placeholder="Title" name="bookTitle">
-        <input type="text" placeholder="Author" name="bookAuthor">
-        <input type="text" placeholder="Description" name="bookDescription">
-        <input type="url" placeholder="image" name="imgUrl">
-        <input type="url" placeholder="Google books url" name="descriptionUrl">
-        <input type="month" placeholder="Date" name="monthAdded">
-        <input type="month" placeholder="Date" name="googleBooksId">
-        <input type="submit">
-    </form>
-    
+    <div class="row">
+        <% recentlyRead.forEach(el => { %>
+        <article class="col-6 col-12-xsmall work-item">
+            <a href='<%= el.url %>' class="image fit thumb">
+            <img src='<%= el.image %>' alt="" class="image fit thumb">
+            </a>
+        
+        <h3 name="title"><%= el.title %></h3>
+        
+        <h5 name="author"><%= el.author %></h5>
+        </article>
+        <% }) %>
+    </div>
 </div>
     
 
