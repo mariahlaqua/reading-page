@@ -9,10 +9,6 @@ const BookSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    body: {
-        type: String,
-        required: true,
-    },
     date: {
         type: Date, 
         default: Date.now,
@@ -28,10 +24,6 @@ const BookSchema = new mongoose.Schema({
     recentlyRead: {
         type: Boolean,
         required: true,
-    },
-    likes: {
-        type: Number, 
-        default: 0,
     },
     url: {
         type: String,

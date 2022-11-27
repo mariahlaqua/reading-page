@@ -60,15 +60,24 @@
             <% topTen.forEach(el =>{ %>
                <% console.log(el.volumeInfo.imageLinks)%>
             <article class="col-6 col-12-xsmall work-item">
+                <form action="/addBook" method="POST">
+                <input type="hidden" name="url" value="<%= el.volumeInfo.infoLink %>" />
             <a href='<%= el.volumeInfo.infoLink %>' class="image fit thumb">
                 <% if(el.volumeInfo.imageLinks){ %>
+                <input type="hidden" name="image" value="<%= el.volumeInfo.imageLinks.thumbnail %>" />
                 <img src='<%= el.volumeInfo.imageLinks.thumbnail %>' alt="" class="image fit thumb">
                 <% }else{ %>
                     <img src='https://shorturl.at/nX034' alt="" class="image fit thumb">
                     <% }%>
             </a>
-            <h3><%= el.volumeInfo.title %></h3>
-            <h5><%= el.volumeInfo.authors %></h5>
+            <input type="hidden" name="title" value="<%= el.volumeInfo.title %>" />
+            <h3 name="title"><%= el.volumeInfo.title %></h3>
+            <input type="hidden" name="author" value="<%= el.volumeInfo.authors %>" />
+            <h5 name="author"><%= el.volumeInfo.authors %></h5>
+            
+                <button>Recommend This book</button>
+            </form>
+
         </article>
         <% }) %>
         <% } %>
