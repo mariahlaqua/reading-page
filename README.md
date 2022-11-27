@@ -2,7 +2,7 @@
 
 ![A preview gif of the end UI.](https://github.com/mariahlaqua/reading-page/blob/main/public/images/search2.gif)
 
-This project is not complete. A simple template to receive book recommendations from users, and to share what you are currently reading and have read in the past. This template uses Google Books to search and MongoDb with Mongoose to store information.
+A template to receive book recommendations from users, and to share what you are currently reading and have read in the past. This template uses Google Books to search and MongoDb with Mongoose to store information.
 
 Currently, the search is functional and up to ten results display. Users can click on "recommend this book" after searching, and send the book to the page owner's database. The page owner may also use this function to create the currently reading and recently read sections. Simply use recommend this book, then within the database collection find the respective item. Update the corresponding boolean values to reflect your reading.
 
