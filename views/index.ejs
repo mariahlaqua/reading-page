@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Reading Page</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -36,20 +26,24 @@
                 <h2>I love to read, use the<br />
             Google Books API to recommend a book to me!</h2>
             </header>
-            <p>Type in a title or author to see results, then click recommend to add it to my list.</p>
+            <p>Type in a title or author to see results, then click "Recommend this Book" to add it to my list.</p>
             <ul class="actions">
                 <li>
                     <form method="post">
-                    <input action="/search" method="post" type="text" placeholder="Search" name="query" id="apiQuery">
-                    <a href="#" id="search"><button>Search</button></a>
-                 </form>
+                        <input action="/search" method="post" type="text" placeholder="Search" name="query" id="apiQuery">
+                        <a href="#" id="search">
+                            <button>Search</button>
+                        </a>
+                    </form>
                 </li>
             </ul>
         </section>
 
+
+<!-- Recently recommended books, Last In First Out-->
         <h2>Recent Recommendations</h2>
         <div class="row">
-            <% recommended.forEach(el => { %>
+            <% recommended.reverse().forEach(el => { %>
             <article class="col-6 col-12-xsmall work-item">
                 <a href='<%= el.url %>' class="image fit thumb">
                 <img src='<%= el.image %>' alt="" class="image fit thumb">
@@ -62,6 +56,8 @@
             <% }) %>
         </div>
 
+        
+<!-- Currently reading -->
     <h2>Currently Reading</h2>
     <div class="row">
         <% currentlyReading.forEach(el => { %>
@@ -77,6 +73,8 @@
         <% }) %>
     </div>
 
+
+<!-- Recently Read -->
     <h2>Recently Read</h2>
 
             <div class="row">
@@ -94,7 +92,6 @@
             </div>
    
 </div>
-    
 
     <script src='js/main.js'></script>
 
