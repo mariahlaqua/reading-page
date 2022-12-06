@@ -49,6 +49,8 @@ If you have forked the repo and plan to push changes to gitHub, create a .gitign
 ```.env```
 ```node_modules/```
 
+This will prevent your secrets from being exposed on github.
+
 Finally, open the search.ejs file. Find the hidden input field that takes the captcha token. Assign the non-secret site key from your google ReCaptcha admin console.:
 
 ```  
@@ -63,7 +65,7 @@ Finally, open the search.ejs file. Find the hidden input field that takes the ca
                     />
 ```
 
-This will prevent your secrets from being exposed on github.
+
 
 In order for your page to show what you are reading, you will need to enter some books into your currently reading and past reading section. This must be done via MongoDB and manually editing the appropriate boolean values.
 
