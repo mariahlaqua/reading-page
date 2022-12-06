@@ -5,12 +5,20 @@ const connectDB = require('./config/database')
 const cors = require('cors')
 const homeRoutes = require('./routes/home')
 const mongoose = require('mongoose')
+const ReCAPTCHA = require('google-recaptcha');
+const RECAPTCHA_SECRET = require('./config/.env')
+const googleSiteKey = '6LctgFQjAAAAAFx3y8MexRsvlLbVc1bcJK3yLr1H'
 
 //dot env
 require('dotenv').config({path: './config/.env'})
 
 //grab config from database file
 connectDB()
+
+//initialize google-recaptcha with your secret key
+const recaptcha = new ReCAPTCHA({
+    secret: RECAPTCHA_SECRET,
+})
 
 //setting up the views, ejs, public folder, using json
 app.set('view engine', 'ejs')

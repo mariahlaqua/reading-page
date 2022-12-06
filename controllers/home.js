@@ -1,5 +1,10 @@
 const { TopologyDescription } = require('mongodb')
 const Book = require('../models/book')
+const ReCAPTCHA = require('google-recaptcha')
+
+const recaptcha = new ReCAPTCHA({
+    secret: RECAPTCHA_SECRET,
+})
 
 module.exports = {
     getIndex: async (req,res)=>{
@@ -28,20 +33,34 @@ module.exports = {
     },
     // creating a new item in the collection, of the user's book recommendation. Mongoose does the date for us.
     addBook: async (req,res)=>{
-        try{
-            await Book.create({
-                title: req.body.title,
-                author: req.body.author,
-                currentlyReading: false,
-                recommended: true,
-                recentlyRead: false,
-                url: req.body.url,
-                image: req.body.image
-            })
-            //console.log(req.body) uncomment to see the request body received by express
-            res.redirect('/')
-        }catch(err){
-            console.log(err)
-        }
+        console.log(req.body)
+        try {
+            const response = await recaptcha.verify({
+                response: req.body["g-recaptcha-response"],
+                remoteip: req.connection.remoteAddress,
+            });
+            if (response.error){
+                res.send('Please try again.');
+            }else{
+               
+                try{
+                    await Book.create({
+                        title: req.body.title,
+                        author: req.body.author,
+                        currentlyReading: false,
+                        recommended: true,
+                        recentlyRead: false,
+                        url: req.body.url,
+                        image: req.body.image
+                    })
+                    console.log("The Captcha Worked!")
+                    //console.log(req.body) uncomment to see the request body received by express
+                    res.redirect('/')
+                }catch(err){
+                    console.log(err)
+                }
+            }
+        }catch(error){
+    res.send('An error occurred.')
     }
-}
+    }}
