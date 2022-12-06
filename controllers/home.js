@@ -53,8 +53,8 @@ module.exports = {
                         url: req.body.url,
                         image: req.body.image
                     })
-                    console.log("The Captcha Worked!")
-                    //console.log(req.body) uncomment to see the request body received by express
+                    //console.log("The Captcha Worked!") uncomment if you are having issues with reCaptcha
+                    //console.log(req.body) uncomment to see the request body received by express parsed as JSON
                     res.redirect('/')
                 }catch(err){
                     console.log(err)
