@@ -16,11 +16,10 @@ Back-End: Node.js for local server, Express, MongoDb with Mongoose for database.
 
 ### Further Optimizations
 
-There are known use cases which cause errors. For example, if a user wanted to recommend a book without an image available via google books, the page will crash. The first priority is to fix these. After that is complete, it would be nice to implement the following:
 ~~captcha after clicking a recommendation~~
-- eliminate redundant captcha code between server.js, controllers/home.js, & search.ejs
+- ~~eliminate redundant captcha code between server.js, controllers/home.js, & search.ejs~~
 - a thank you message for successful recommendations
-- write test cases
+- write test cases / check for image issues when image is not available through Google Books
 - integrate database document manipulation through CLI
 
 Google Books does have a mature property for books, another option to prevent abuse would be to filter these out of results.
