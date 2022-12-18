@@ -7,6 +7,7 @@ const recaptcha = new ReCAPTCHA({
 })
 
 module.exports = {
+    // handle get request for index page
     getIndex: async (req,res)=>{
         try{
             const recentlyRead = await Book.find({recentlyRead:true})
@@ -19,6 +20,7 @@ module.exports = {
         }
         
     },
+    // handle post request from index form, search Google Books
     postIndex: async (req,res)=>{
         const recentlyRead = await Book.find({recentlyRead:true})
         const recommended = await Book.find({recommended: true})
