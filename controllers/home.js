@@ -33,7 +33,6 @@ module.exports = {
     },
     // creating a new item in the collection, of the user's book recommendation. Mongoose does the date for us.
     addBook: async (req,res)=>{
-        console.log(req.body)
         try {
             const response = await recaptcha.verify({
                 response: req.body["g-recaptcha-response"],
