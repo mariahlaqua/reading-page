@@ -1,3 +1,5 @@
+//create a database schema with mongoose, for use in mongoDb
+
 const mongoose = require('mongoose')
 
 const BookSchema = new mongoose.Schema({
