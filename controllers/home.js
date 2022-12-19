@@ -1,10 +1,6 @@
 const { TopologyDescription } = require('mongodb')
-const Book = require('../models/book')
-const ReCAPTCHA = require('google-recaptcha')
-
-const recaptcha = new ReCAPTCHA({
-    secret: RECAPTCHA_SECRET,
-})
+const Book = require('../models/book');
+require('dotenv').config({path: '../config/.env'})
 
 module.exports = {
     // handle get request for index page
@@ -35,33 +31,23 @@ module.exports = {
     },
     // creating a new item in the collection, of the user's book recommendation. Mongoose does the date for us.
     addBook: async (req,res)=>{
-        try {
-            const response = await recaptcha.verify({
-                response: req.body["g-recaptcha-response"],
-                remoteip: req.connection.remoteAddress,
-            });
-            if (response.error){
-                res.send('Please try again.');
+            console.log(req.body['g-recaptcha-response'])
+            const response = await fetch(`${process.env.RECAPTCHA_URL}&secret=${process.env.RECAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`)
+            data = await response.json();
+            console.log(data);
+            if(data.score > 0.5){
+                await Book.create({
+                    title: req.body.title,
+                    author: req.body.author,
+                    currentlyReading: false,
+                    recommended: true,
+                    recentlyRead: false,
+                    url: req.body.url,
+                    image: req.body.image
+                })
+                res.redirect('/')
             }else{
-               
-                try{
-                    await Book.create({
-                        title: req.body.title,
-                        author: req.body.author,
-                        currentlyReading: false,
-                        recommended: true,
-                        recentlyRead: false,
-                        url: req.body.url,
-                        image: req.body.image
-                    })
-                    //console.log("The Captcha Worked!") uncomment if you are having issues with reCaptcha
-                    //console.log(req.body) uncomment to see the request body received by express parsed as JSON
-                    res.redirect('/')
-                }catch(err){
-                    console.log(err)
-                }
+                res.redirect('/')
             }
-        }catch(error){
-    res.send('An error occurred.')
-    }
-    }}
+        }
+}
